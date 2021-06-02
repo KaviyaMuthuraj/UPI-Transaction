@@ -17,7 +17,7 @@ export default class ViewBalanceController extends Controller {
   @action
   viewBalance() {
     const self = this;
-    this.store.queryRecord('account-detail', {accountNumber: this.accountNumber,UPIPIN: this.UPIPIN}) //GET accountDetails
+    this.store.queryRecord('account-detail', {accountNumber: this.accountNumber,UPIPIN: this.UPIPIN})
     .then((account) => {
       self.accountValidation = true;
       self.userName = account.userName;
@@ -25,7 +25,7 @@ export default class ViewBalanceController extends Controller {
     })
     .catch((error) => {
       if(error.errors[0].status == "500") {
-        this.errMsg = "Something went Wrong..! Please try again later"
+        this.errMsg = "Something went Wrong..! Please verify your values.."
       } else if(error.errors[0].status == "400") {
         this.errMsg = error.errors[0].detail;
       }

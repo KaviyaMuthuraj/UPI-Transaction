@@ -7,7 +7,7 @@ export default class TransferAmountController extends Controller {
   @service store;
   @tracked transferState = false;
   @tracked errMsg = '';
-  @tracked accountValid = false;
+  @tracked accountValidation = false;
   accountDetail = ''
   @action
   togglePassword(value) {
@@ -20,12 +20,12 @@ export default class TransferAmountController extends Controller {
   verifyAccount() {
     this.store.queryRecord('account-detail', {accountNumber: this.accountNumber,UPIPIN: this.UPIPIN})
       .then(() => {
-          this.accountValid = true;
+          this.accountValidation = true;
           this.errMsg = '';
       })
       .catch((error) => {
         if(error.errors[0].status == "500") {
-          this.errMsg = "Something went Wrong..! Please try again later"
+          this.errMsg = "Something went Wrong..! Please check your values..!";
         } else if(error.errors[0].status == "400") {
           this.errMsg = error.errors[0].detail;
         }
@@ -46,7 +46,7 @@ export default class TransferAmountController extends Controller {
       .catch((error) => {
         transaction.unloadRecord();
         if(error.errors[0].status == "500") {
-          this.errMsg = "Something went Wrong..! Please try again later"
+          this.errMsg = "Something went Wrong..! Please verify your values..!";
         } else if(error.errors[0].status == "400") {
           this.errMsg = error.errors[0].detail;
         }

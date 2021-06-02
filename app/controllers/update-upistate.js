@@ -29,7 +29,7 @@ export default class UpdateUpistateController extends Controller {
       })
       .catch((error) => {
         if(error.errors[0].status == "500") {
-          this.errMsg = "Something went Wrong..! Please try again later"
+          this.errMsg = "Something went Wrong..! Please verify your values..!";
         } else if(error.errors[0].status == "400") {
           this.errMsg = error.errors[0].detail;
         }
@@ -47,7 +47,7 @@ export default class UpdateUpistateController extends Controller {
       })
       .catch((error) => {
         if(error.errors[0].status == "500") {
-          this.errMsg = "Something went Wrong..! Please try again later"
+          this.errMsg = "Something went Wrong..! Please verify your values..!";
         } else if(error.errors[0].status == "400") {
           this.errMsg = error.errors[0].detail;
         }
