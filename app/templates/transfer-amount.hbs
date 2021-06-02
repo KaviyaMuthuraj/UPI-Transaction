@@ -1,0 +1,48 @@
+{{page-title "TransferAmount"}}
+{{#if this.transferState}}
+  <div class="container"><br>
+    <i class="fa fa-bank" id="icon"></i>
+    <h1>ZOHO UPI-TRANSACTION</h1>
+      <p>Your transaction completed successfully...!</p>
+    <form>
+      <LinkTo @route="transaction-type"><input type="button" value="OK"/></LinkTo>
+    </form>
+  </div>
+{{else}}
+  <div class="container2"><br>
+      <i class="fa fa-bank" id="icon"></i>
+      <h1>ZOHO UPI-TRANSACTION</h1>
+      <p>to transfer amount</p><br>
+      <p class="error">{{this.errMsg}}</p>
+      <form>
+        {{#if this.accountValid}}
+          <Input
+            @type="text"
+            @placeholder="Enter the receiver account number"
+            @autocomplete="off"
+            @value={{this.otherAccount}} /><br>
+          <Input
+            @type="text"
+            @placeholder="Enter the amount to transfer"
+            @autocomplete="off"
+            @value={{this.amount}} />
+            <i id="hide">.00 ₹</i><br>
+            <input type="button" value="Transfer amount" {{on 'click' this.transferAmount }} />
+        {{else}}
+          <Input
+            @type="text"
+            @placeholder="Enter your account number"
+            @autocomplete="off"
+            @value={{this.accountNumber}} /><br>
+          <Input
+            @type="password"
+            @placeholder="Enter your UPI PIN"
+            @autocomplete="off"
+            @value={{this.UPIPIN}} />
+          <i class="far fa-eye" id="hide" {{on 'click' this.togglePassword }}></i><br>
+          <input type="button" value="Verify" {{on 'click' this.verifyAccount }} />
+        {{/if}}
+      </form>
+  </div>
+{{/if}}
+{{outlet}}

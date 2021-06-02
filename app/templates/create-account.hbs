@@ -1,0 +1,45 @@
+{{page-title "CreateAccount"}}
+      {{#if this.validation}}
+        <div class="container"><br>
+          <i class="fa fa-bank" id="icon"></i>
+          <h1>ZOHO UPI-TRANSACTION</h1>
+          <p>Your account created successfully...!</p>
+          <form>
+            <LinkTo @route="transaction-type"><input type="button" value="OK"/></LinkTo>
+          </form>
+        </div>
+      {{else}}
+        <div class="container2"><br>
+          <i class="fa fa-bank" id="icon"></i>
+          <h1>ZOHO UPI-TRANSACTION</h1>
+          <p>to create your Account</p>
+          <p class="error">{{this.errMsg}}</p>
+          <form>
+            <Input
+                @type="text"
+                @name = "userName"
+                @placeholder="Enter your name"
+                @autocomplete="off"
+                @value={{this.userName}}
+                />
+            <Input
+                @type="text"
+                @name = "accountNumber"
+                @placeholder="Enter your account number"
+                @autocomplete="off"
+                @value={{this.accountNumber}}
+                />
+            <Input
+                @type="password"
+                @name = "UPIPIN"
+                @placeholder="Enter your UPI PIN"
+                @autocomplete="off"
+                @value={{this.UPIPIN}}
+                />
+            <i class="far fa-eye" id="hide" {{on 'click' this.togglePassword }}></i><br>
+            <input type="button" value="Create account" {{on 'click' this.createAccount }}/>
+            </form>
+        </div>
+      {{/if}}
+
+{{outlet}}

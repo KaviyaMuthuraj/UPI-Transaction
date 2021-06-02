@@ -1,0 +1,60 @@
+{{page-title "UpdateUPIState"}}
+{{#if this.accountValidation}}
+  {{#if this.updationState}}
+    <div class="container"><br>
+      <i class="fa fa-bank" id="icon"></i>
+      <h1>ZOHO UPI-TRANSACTION</h1>
+      <p>Your UPI State is updated successfully..!</p>
+      <LinkTo @route="transaction-type"><input type="button" value="OK"/></LinkTo>
+    </div>
+  {{else}}
+    <div class="container2"><br>
+      <i class="fa fa-bank" id="icon"></i>
+      <h1>ZOHO UPI-TRANSACTION</h1>
+      <p>to update your UPI state</p><br>
+      <p class="error">{{this.errMsg}}</p>
+      <form>
+        <p> --- Select your option --- </p><br>
+        <label class="option">
+        <Input
+          @type="radio"
+          @name="option"
+          @value=true
+          onchange={{action "getSelectedOption" true}}/>
+        <span>Enable UPI state</span>
+        </label><br><br><br>
+        <label class="option">
+        <Input
+          @type="radio"
+          @name="option"
+          @value=false
+          onchange={{action "getSelectedOption" false}}/>
+        <span>Disable UPI state</span>
+        </label><br><br>
+        <input type="button" value="Update" {{on 'click' this.updateUPIState }}/>
+        </form>
+      </div>
+  {{/if}}
+{{else}}
+  <div class="container5"><br>
+    <i class="fa fa-bank" id="icon"></i>
+    <h1>ZOHO UPI-TRANSACTION</h1>
+    <p>to update your UPI state</p>
+    <p class="error">{{this.errMsg}}</p>
+    <form>
+      <Input
+        @type="text"
+        @placeholder="Enter your account number"
+        @autocomplete="off"
+        @value = {{this.accountNumber}}/><br><br>
+      <Input
+        @type="password"
+        @placeholder="Enter your UPI PIN"
+        @autocomplete="off"
+        @value={{this.UPIPIN}} />
+      <i class="far fa-eye" id="hide" {{on 'click' this.togglePassword }}></i><br><br>
+      <input type="button" value="Verify" {{on 'click' this.validateAccount }}/>
+    </form>
+  </div>
+{{/if}}
+{{outlet}}

@@ -1,0 +1,11 @@
+{{page-title "TransactionType"}}
+<div class="container1" {{will-destroy this.reloadPage}}><br>
+	<i class="fa fa-bank" id="icon"></i>
+	<h1>ZOHO UPI-TRANSACTION</h1><br>
+  <LinkTo @route="create-account"><div class="transaction">Create a new account</div></LinkTo><br>
+  <LinkTo @route="transfer-amount"><div class="transaction">Transfer amount</div></LinkTo><br>
+  <LinkTo @route="view-balance"><div class="transaction">View account balance</div></LinkTo><br>
+  <LinkTo @route="show-history"><div class="transaction">Show transaction history</div></LinkTo><br>
+  <LinkTo @route="update-UPIState"><div class="transaction">Update UPI state</div></LinkTo>
+</div>
+{{outlet}}

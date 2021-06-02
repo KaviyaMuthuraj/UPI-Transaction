@@ -1,0 +1,48 @@
+{{page-title "ShowHistory"}}
+{{#if this.transactionValidation}}
+  <div class="container3"><br>
+    <i class="fa fa-bank" id="icon"></i>
+    <h1>ZOHO UPI-TRANSACTION</h1>
+    <div class="table">
+      <table>
+        <tr>
+          <th>User-Name</th>
+          <th>Amount</th>
+          <th>Date-Time</th>
+          <th>Transaction-type</th>
+        </tr>
+        {{#each this.transactionDetails as |transaction|}}
+            <tr>
+              <td>{{transaction.userName}}</td>
+              <td>{{transaction.amount}}</td>
+              <td>{{transaction.dateTime}}</td>
+              <td>{{transaction.transactionType}}</td>
+            </tr>
+        {{/each}}
+      </table>
+    </div>
+    <LinkTo @route="transaction-type"><input type="button" value="OK"/></LinkTo>
+  </div>
+{{else}}
+  <div class="container5"><br>
+      <i class="fa fa-bank" id="icon"></i>
+      <h1>ZOHO UPI-TRANSACTION</h1>
+      <p>to show your transaction history</p>
+      <p class="error">{{this.errMsg}}</p>
+      <form>
+        <Input
+          @type="text"
+          @placeholder="Enter your account number"
+          @autocomplete="off"
+          @value = {{this.accountNumber}}/><br>
+        <Input
+          @type="password"
+          @placeholder="Enter your UPI PIN"
+          @autocomplete="off"
+          @value = {{this.UPIPIN}} />
+        <i class="far fa-eye" id="hide" {{on 'click' this.togglePassword }}></i><br>
+        <input type="button" value="Show history" {{on 'click' this.showHistory }}/>
+      </form>
+  </div>
+{{/if}}
+{{outlet}}

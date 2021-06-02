@@ -1,0 +1,29 @@
+{{page-title "ViewBalance"}}
+<div class="container5"><br>
+		<i class="fa fa-bank" id="icon"></i>
+		<h1>ZOHO UPI-TRANSACTION</h1>
+		<form >
+      {{#if this.accountValidation}}
+        <p>Welcome to our UPI Transaction</p><br><br>
+        <h2 class="name">Hello {{this.userName}} ..!</h2><br><br>
+        <div class="text">your account balance is <span class="name">{{this.accountBalance}}.00 ₹</span> </div><br><br>
+        <LinkTo @route="transaction-type"><input type="button" value="OK"/></LinkTo>
+      {{else}}
+        <p>to view your account balance</p>
+        <p class="error">{{this.errMsg}}</p>
+        <Input
+          @type="text"
+          @placeholder="Enter your account number"
+          @autocomplete="off"
+          @value={{this.accountNumber}} /><br>
+        <Input
+          @type="password"
+          @placeholder="Enter your UPI PIN"
+          @autocomplete="off"
+          @value={{this.UPIPIN}} />
+        <i class="far fa-eye" id="hide" {{on 'click' this.togglePassword }}></i><br>
+        <input type="button" value="View balance" {{on 'click' this.viewBalance }}/>
+      {{/if}}
+		</form>
+</div>
+{{outlet}}
