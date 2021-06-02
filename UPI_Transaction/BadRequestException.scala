@@ -1,0 +1,1 @@
+case class BadRequestException(e: String) extends Exception(e)

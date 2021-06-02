@@ -1,0 +1,28 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+	<welcome-file-list>
+        <welcome-file>home/index.html</welcome-file>
+    </welcome-file-list>
+	
+	<servlet>
+		<servlet-name>CreateAccount</servlet-name>
+		<servlet-class>CreateAccount</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CreateAccount</servlet-name>
+		<url-pattern>/accountDetails/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>TransferAmount</servlet-name>
+		<servlet-class>TransferAmount</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>TransferAmount</servlet-name>
+		<url-pattern>/transactions/*</url-pattern>
+	</servlet-mapping>
+</web-app>
